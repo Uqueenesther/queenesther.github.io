@@ -56,7 +56,9 @@ body{font-family:var(--font-sora);color:var(--text-primary);background:var(--bg-
 
 .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-light);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-sm);animation:slideDown 0.5s cubic-bezier(0.34,1.56,0.64,1)}
 
-.nav-logo{font-size:20px;font-weight:700;letter-spacing:-0.5px;background:var(--gradient-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:var(--font-poppins);cursor:pointer}
+.nav-logo{font-size:20px;font-weight:700;letter-spacing:-0.5px;background:var(--gradient-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:var(--font-poppins);cursor:pointer;text-decoration:none;display:inline-block;transition:opacity var(--transition)}
+
+.nav-logo:hover{opacity:0.8}
 
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 
@@ -68,9 +70,11 @@ body{font-family:var(--font-sora);color:var(--text-primary);background:var(--bg-
 
 .nav-links a:hover::after{width:100%}
 
-.nav-toggle{display:none;align-items:center;justify-content:center;width:48px;height:48px;border:none;border-radius:14px;background:var(--bg-accent);color:var(--accent-blue);cursor:pointer;transition:all var(--transition);font-size:18px}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:48px;height:48px;border:none;border-radius:14px;background:var(--accent-blue);color:white;cursor:pointer;transition:all var(--transition);font-size:18px;box-shadow:0 4px 12px rgba(37,99,235,0.2)}
 
-.nav-toggle:hover{transform:translateY(-1px);background:rgba(6,182,212,0.12)}
+.nav-toggle:hover{transform:translateY(-2px);background:var(--accent-sky);box-shadow:0 6px 16px rgba(37,99,235,0.3)}
+
+.nav-toggle:active{transform:translateY(0);}
 
 .mobile-menu{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(18px);padding:5rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--transition),visibility var(--transition);z-index:150}
 
@@ -155,6 +159,8 @@ section{padding:5rem 2rem;max-width:1400px;margin:0 auto;animation:slideUp 0.8s 
 
 .about-card:hover .about-card-icon{transform:scale(1.2) rotate(10deg)}
 
+.about-card-text{text-align:center;flex:1}
+
 .about-card-text h3{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem}
 
 .about-card-text p{font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0}
@@ -169,7 +175,9 @@ section{padding:5rem 2rem;max-width:1400px;margin:0 auto;animation:slideUp 0.8s 
 
 .exp-card:hover{transform:translateY(-6px);border-color:var(--accent-teal);box-shadow:0 12px 32px rgba(6,182,212,0.15)}
 
-.exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;position:relative;z-index:1}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;position:relative;z-index:1;flex-wrap:wrap}
+
+.exp-header > div:first-child{flex:1;min-width:200px}
 
 .exp-title{font-size:16px;font-weight:700;color:var(--text-primary)}
 
@@ -260,6 +268,14 @@ section{padding:5rem 2rem;max-width:1400px;margin:0 auto;animation:slideUp 0.8s 
 
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 
+.mobile-menu-close{display:none;position:absolute;top:2rem;right:2rem;background:var(--accent-coral);color:white;border:none;width:48px;height:48px;border-radius:12px;font-size:24px;cursor:pointer;transition:all var(--transition);z-index:200;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(255,107,107,0.3)}
+
+.mobile-menu-close:hover{transform:rotate(90deg) scale(1.1);background:#ff5252;box-shadow:0 6px 16px rgba(255,107,107,0.4)}
+
+.mobile-menu-close:active{transform:rotate(90deg) scale(0.95)}
+
+.mobile-menu.open .mobile-menu-close{display:flex}
+
 .form-input,.form-textarea{width:100%;padding:12px 16px;border:1.5px solid var(--border-color);border-radius:10px;font-size:14px;font-family:var(--font-sora);color:var(--text-primary);background:white;transition:all var(--transition)}
 
 .form-input::placeholder,.form-textarea::placeholder{color:var(--text-tertiary)}
@@ -320,6 +336,11 @@ a{transition:all var(--transition)}
   .nav-links{display:none}
   .nav-toggle{display:flex}
   .nav-logo{font-size:18px}
+  .exp-header{justify-content:center;text-align:center;flex-direction:column;align-items:center}
+  .exp-header > div:first-child{min-width:auto;width:100%}
+  .exp-date{margin-top:0.75rem}
+  .form-row{grid-template-columns:1fr}
+  .mobile-menu{padding:5rem 2rem 2rem 2rem}
 }
 
 @media(max-width:560px){
@@ -331,7 +352,7 @@ a{transition:all var(--transition)}
 </style>
 
 <nav class="nav">
-  <div class="nav-logo">Esther Umoh</div>
+  <a href="/" class="nav-logo">Esther Umoh</a>
   <button class="nav-toggle" aria-label="Open navigation menu"><i class="ti ti-menu-2"></i></button>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -343,6 +364,7 @@ a{transition:all var(--transition)}
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation menu"><i class="ti ti-x"></i></button>
   <a href="#about">About</a>
   <a href="#experience">Experience</a>
   <a href="#skills">Skills</a>
@@ -697,18 +719,21 @@ a{transition:all var(--transition)}
 <script>
   const navToggle = document.querySelector('.nav-toggle');
   const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
   const mobileLinks = mobileMenu.querySelectorAll('a');
 
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+  }
+
   navToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    navToggle.innerHTML = isOpen ? '<i class="ti ti-x"></i>' : '<i class="ti ti-menu-2"></i>';
+    mobileMenu.classList.toggle('open');
   });
 
+  mobileMenuClose.addEventListener('click', closeMenu);
+
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      navToggle.innerHTML = '<i class="ti ti-menu-2"></i>';
-    });
+    link.addEventListener('click', closeMenu);
   });
 </script>
 
